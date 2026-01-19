@@ -19,7 +19,7 @@ app.use('/', require('./routes/routes'))
 app.use(express.static(path.join(__dirname, 'dist/dashboard-temp/browser')));
 
 // Handle Angular Routing (Redirect all other requests to index.html)
-app.get('*', (req, res) => {
+app.get(/(.*)/, (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/dashboard-temp/browser/index.html'));
 });
 
