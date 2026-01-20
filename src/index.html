@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>DashboardTemp</title>
+  <title>Financial Dashboard</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // System Theme Initialization
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
   <app-root></app-root>
 </body>
 </html>

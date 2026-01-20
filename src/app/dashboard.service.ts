@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from './config';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardService {
-  private apiUrl = '';
+  private apiUrl = API_BASE_URL;
 
   constructor(private http: HttpClient) {}
 
@@ -20,5 +21,9 @@ export class DashboardService {
 
   getYears(): Observable<string[]> {
     return this.http.get<string[]>(`${this.apiUrl}/years`);
+  }
+
+  getAiSummary(year: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/summary`, { year });
   }
 }
