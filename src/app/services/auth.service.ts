@@ -42,9 +42,7 @@ export class AuthService {
   }
 
   fetchProfile() {
-      this.http.get<any>(`${API_BASE_URL}/profile`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` }
-      }).subscribe({
+      this.http.get<any>(`${API_BASE_URL}/profile`).subscribe({
           next: (u) => this.user.set(u),
           error: () => this.logout() // invalid token
       });
